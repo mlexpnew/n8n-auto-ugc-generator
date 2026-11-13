@@ -1,0 +1,23 @@
+# n8n + ProofPost on one machine:  docker compose up -d
+# n8n UI: http://localhost:5678  (import workflows/proofpost-weekly.json)
+services:
+  proofpost:
+    build: .
+    environment:
+      PROOFPOST_API_KEYS: ${PROOFPOST_API_KEYS:-change-me}
+    restart: unless-stopped
+
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    environment:
+      GENERIC_TIMEZONE: Asia/Kolkata
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - proofpost
+    restart: unless-stopped
+
+volumes:
+  n8n_data:
