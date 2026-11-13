@@ -1,0 +1,17 @@
+# Brand voice for ProofPost. Copy, edit, pass with --brand.
+name: Brewly Coffee
+tone: warm            # warm | crisp | playful
+emoji: true
+hashtags: ["#Brewly", "#CoffeeLovers", "#CustomerLove"]
+cta: "Try the cold brew kit, link in bio."
+linkedin_cta: "Thank you to every customer who takes the time to share feedback."
+banned_words: ["cheap", "discount"]   # words your brand never uses
+min_rating: 4
+max_posts: 10
+# Optional: your own product aspects (label: trigger words). Defaults cover common D2C ones.
+aspects:
+  taste: [taste, flavour, flavor, smooth, rich, aroma]
+  freshness: [fresh, roasted, freshly]
+  delivery: [delivery, delivered, arrived, shipping]
+  packaging: [packaging, packed, box, unboxing]
+  value: [value, worth, price]

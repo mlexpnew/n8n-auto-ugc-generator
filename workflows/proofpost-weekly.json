@@ -1,0 +1,230 @@
+{
+  "name": "ProofPost: weekly reviews to approved social posts",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "name": "Every Monday 10:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        300
+      ],
+      "id": "0d05bbce-b3d8-505d-9cd3-1e1aa5d57e3c"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Reviews",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "name": "Read reviews sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        300
+      ],
+      "id": "4e7f83d1-0dbb-5a6f-a510-3756fb089baa"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Edit BRAND to match your voice. Reviews come from the sheet above\n// (columns: review, rating, author, date, verified, consent).\nconst BRAND = {\n  \"name\": \"Your Brand\",\n  \"tone\": \"warm\",\n  \"emoji\": true,\n  \"hashtags\": [\n    \"#YourBrand\",\n    \"#CustomerLove\"\n  ],\n  \"cta\": \"Shop the bestsellers, link in bio.\",\n  \"banned_words\": [],\n  \"min_rating\": 4,\n  \"max_posts\": 10\n};\nreturn [{ json: {\n  reviews: $input.all().map(i => i.json),\n  brand: BRAND,\n  platforms: ['instagram', 'linkedin', 'x'],\n} }];"
+      },
+      "name": "Bundle reviews + brand",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "id": "586053a6-12f6-56ba-a903-f69f91b8d1aa"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://proofpost:8000/v1/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "name": "ProofPost: reviews to posts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        300
+      ],
+      "id": "2c65ff5a-5302-57d1-aaf8-2feb2f9388cc"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "posts",
+        "options": {}
+      },
+      "name": "One row per post",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        880,
+        200
+      ],
+      "id": "2fb49003-9d3c-552e-b3af-8b511e4b1d85"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Approval queue",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "platform": "={{ $json.platform }}",
+            "post_text": "={{ $json.text }}",
+            "quote": "={{ $json.quote }}",
+            "attribution": "={{ $json.attribution }}",
+            "rating": "={{ $json.rating }}",
+            "review_id": "={{ $json.review_id }}",
+            "status": "pending_approval",
+            "generated_at": "={{ $now.toISO() }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "name": "Add to approval queue",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        200
+      ],
+      "id": "bf1b9455-2394-5672-a1a5-d0a111e92a78"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "#social",
+          "mode": "name"
+        },
+        "text": "={{ $json.summary.posts_ready_for_approval }} new review posts are waiting for approval. {{ $json.summary.reviews_rejected }} reviews were held back (PII, claims, incentivised or negative). Open the Approval queue sheet to review.",
+        "otherOptions": {}
+      },
+      "name": "Tell the team on Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        420
+      ],
+      "id": "35945877-eb6f-51dd-b592-59e2659a976c"
+    }
+  ],
+  "connections": {
+    "Every Monday 10:00": {
+      "main": [
+        [
+          {
+            "node": "Read reviews sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read reviews sheet": {
+      "main": [
+        [
+          {
+            "node": "Bundle reviews + brand",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bundle reviews + brand": {
+      "main": [
+        [
+          {
+            "node": "ProofPost: reviews to posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ProofPost: reviews to posts": {
+      "main": [
+        [
+          {
+            "node": "One row per post",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tell the team on Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One row per post": {
+      "main": [
+        [
+          {
+            "node": "Add to approval queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

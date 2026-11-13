@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev,api,app]"
+      - name: Lint
+        run: ruff check .
+      - name: Tests
+        run: pytest -q
+      - name: Benchmark (fails on any problem post or coverage below 90%)
+        run: |
+          set +e
+          python -m proofpost.evaluate --gate
+          code=$?
+          cat eval_results/report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+      - name: n8n workflow is valid JSON
+        run: python -c "import json; json.load(open('workflows/proofpost-weekly.json'))"
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and smoke test the API image
+        run: |
+          docker build -t proofpost .
+          docker run -d -p 8000:8000 --name api proofpost
+          for i in $(seq 1 20); do curl -fs localhost:8000/health && break; sleep 1; done
+          curl -fs -X POST localhost:8000/v1/posts -H 'Content-Type: application/json' \
+            -d '{"reviews":[{"review":"The aroma is fresh and delivery took 2 days, packed well.","rating":5}]}' \
+            | python -c "import json,sys; d=json.load(sys.stdin); assert d['posts'], d; print('ok', len(d['posts']))"
