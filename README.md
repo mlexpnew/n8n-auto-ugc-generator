@@ -5,6 +5,8 @@
 **Turn real customer reviews into compliant, on-brand social posts, every week, automatically.**
 ProofPost reads your review exports (Google, Shopify review apps, Amazon or any sheet), picks the reviews that are safe and worth sharing, quotes them **word for word**, writes Instagram, LinkedIn and X posts in your brand voice, and drops them into an approval sheet. A person approves; nothing is published on its own.
 
+![ProofPost weekly n8n workflow](docs/workflow.svg)
+
 ## Why brands need it
 
 Reviews are the cheapest, most trusted marketing a D2C brand has. Reposting them by hand is slow, and reposting them carelessly is risky:

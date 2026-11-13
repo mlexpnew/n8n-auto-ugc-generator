@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="600" viewBox="0 0 1280 600" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+<defs>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#2a2738"/></pattern>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a9a3c2"/></marker>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1280" height="600" rx="18" fill="#16141f"/>
+<rect width="1280" height="600" rx="18" fill="url(#dots)"/>
+<text x="40" y="58" fill="#f4f2fa" font-size="26" font-weight="700">ProofPost · weekly n8n workflow</text>
+<text x="40" y="86" fill="#a9a3c2" font-size="15">Real reviews in. Compliant, verbatim-quoted posts out. A person approves before anything is published.</text>
+<path d="M172 270.0 C197.0 270.0, 197.0 270.0, 218 270.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M354 270.0 C379.0 270.0, 379.0 270.0, 400 270.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M536 270.0 C561.0 270.0, 561.0 270.0, 582 270.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M718 270.0 C759.0 270.0, 759.0 166.0, 796 166.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M932 166.0 C957.0 166.0, 957.0 166.0, 978 166.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M718 270.0 C759.0 270.0, 759.0 386.0, 796 386.0" fill="none" stroke="#a9a3c2" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M1114 166.0 H1156" fill="none" stroke="#a9a3c2" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="1160" y="110" width="88" height="112" rx="16" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="1204" cy="144" r="7" fill="none" stroke="#e5e7eb" stroke-width="3.5"/><path d="M1190 168 Q1204 150 1218 168" fill="none" stroke="#e5e7eb" stroke-width="3.5" stroke-linecap="round"/>
+<text x="1204" y="246" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">You approve</text>
+<text x="1204" y="266" fill="#a9a3c2" font-size="13" text-anchor="middle">then publish</text>
+<rect x="40" y="214" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="106.0" cy="270.0" r="30" fill="#f59e0b" opacity="0.14"/>
+<circle cx="106.0" cy="270.0" r="17" fill="none" stroke="#f59e0b" stroke-width="3.5"/><path d="M106.0 260.0 V270.0 L114.0 276.0" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="106.0" y="350" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">Every Monday</text>
+<text x="106.0" y="370" fill="#a9a3c2" font-size="13" text-anchor="middle">10:00 schedule</text>
+<rect x="222" y="214" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="288.0" cy="270.0" r="30" fill="#22c55e" opacity="0.14"/>
+<rect x="271.0" y="255.0" width="34" height="30" rx="4" fill="none" stroke="#22c55e" stroke-width="3.5"/><path d="M271.0 266.0 H305.0 M271.0 276.0 H305.0 M283.0 255.0 V285.0" stroke="#22c55e" stroke-width="3"/>
+<text x="288.0" y="350" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">Read reviews</text>
+<text x="288.0" y="370" fill="#a9a3c2" font-size="13" text-anchor="middle">Google Sheets</text>
+<rect x="404" y="214" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="470.0" cy="270.0" r="30" fill="#f97316" opacity="0.14"/>
+<path d="M462.0 255.0 Q454.0 255.0 454.0 263.0 V267.0 L450.0 270.0 L454.0 273.0 V277.0 Q454.0 285.0 462.0 285.0" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M478.0 255.0 Q486.0 255.0 486.0 263.0 V267.0 L490.0 270.0 L486.0 273.0 V277.0 Q486.0 285.0 478.0 285.0" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="470.0" y="350" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">Bundle</text>
+<text x="470.0" y="370" fill="#a9a3c2" font-size="13" text-anchor="middle">reviews + brand voice</text>
+<rect x="586" y="214" width="132" height="112" rx="18" fill="#a855f7" opacity="0.35" filter="url(#glow)"/>
+<rect x="586" y="214" width="132" height="112" rx="18" fill="#24212f" stroke="#a855f7" stroke-width="2.5"/>
+<circle cx="652.0" cy="270.0" r="30" fill="#a855f7" opacity="0.14"/>
+<path d="M652.0 252.0 L668.0 259.0 V271.0 Q668.0 283.0 652.0 289.0 Q636.0 283.0 636.0 271.0 V259.0 Z" fill="none" stroke="#a855f7" stroke-width="3.5" stroke-linejoin="round"/><path d="M645.0 271.0 L650.0 276.0 L660.0 265.0" fill="none" stroke="#a855f7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="652.0" y="350" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">ProofPost API</text>
+<text x="652.0" y="370" fill="#a9a3c2" font-size="13" text-anchor="middle">POST /v1/posts</text>
+<rect x="800" y="110" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="866.0" cy="166.0" r="30" fill="#38bdf8" opacity="0.14"/>
+<path d="M848.0 166.0 H862.0 M862.0 166.0 L880.0 154.0 M862.0 166.0 H880.0 M862.0 166.0 L880.0 178.0" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+<text x="866.0" y="246" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">One row per post</text>
+<text x="866.0" y="266" fill="#a9a3c2" font-size="13" text-anchor="middle">Split Out</text>
+<rect x="982" y="110" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="1048.0" cy="166.0" r="30" fill="#22c55e" opacity="0.14"/>
+<rect x="1031.0" y="151.0" width="34" height="30" rx="4" fill="none" stroke="#22c55e" stroke-width="3.5"/><path d="M1031.0 162.0 H1065.0 M1031.0 172.0 H1065.0 M1043.0 151.0 V181.0" stroke="#22c55e" stroke-width="3"/>
+<text x="1048.0" y="246" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">Approval queue</text>
+<text x="1048.0" y="266" fill="#a9a3c2" font-size="13" text-anchor="middle">status: pending</text>
+<rect x="800" y="330" width="132" height="112" rx="18" fill="#24212f" stroke="#3a3650" stroke-width="1.5"/>
+<circle cx="866.0" cy="386.0" r="30" fill="#ec4899" opacity="0.14"/>
+<path d="M849.0 373.0 H883.0 V394.0 H863.0 L855.0 402.0 V394.0 H849.0 Z" fill="none" stroke="#ec4899" stroke-width="3.5" stroke-linejoin="round"/>
+<text x="866.0" y="466" fill="#f4f2fa" font-size="15" font-weight="600" text-anchor="middle">Notify team</text>
+<text x="866.0" y="486" fill="#a9a3c2" font-size="13" text-anchor="middle">Slack summary</text>
+<path d="M652 380 V396 H670 V410" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="4 4"/>
+<rect x="330" y="410" width="400" height="164" rx="14" fill="#24212f" stroke="#a855f7" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="348" y="436" fill="#a855f7" font-size="13" font-weight="700" letter-spacing="1">INSIDE PROOFPOST</text>
+<circle cx="354" cy="459" r="9" fill="#a855f7" opacity="0.22"/>
+<text x="354" y="463" fill="#f4f2fa" font-size="11" font-weight="700" text-anchor="middle">1</text>
+<text x="372" y="464" fill="#f4f2fa" font-size="14">Screen out incentivised, mixed, fake, spam</text>
+<circle cx="354" cy="485" r="9" fill="#a855f7" opacity="0.22"/>
+<text x="354" y="489" fill="#f4f2fa" font-size="11" font-weight="700" text-anchor="middle">2</text>
+<text x="372" y="490" fill="#f4f2fa" font-size="14">Redact phone, email, UPI, order id</text>
+<circle cx="354" cy="511" r="9" fill="#a855f7" opacity="0.22"/>
+<text x="354" y="515" fill="#f4f2fa" font-size="11" font-weight="700" text-anchor="middle">3</text>
+<text x="372" y="516" fill="#f4f2fa" font-size="14">Pick a verbatim quote, no claims</text>
+<circle cx="354" cy="537" r="9" fill="#a855f7" opacity="0.22"/>
+<text x="354" y="541" fill="#f4f2fa" font-size="11" font-weight="700" text-anchor="middle">4</text>
+<text x="372" y="542" fill="#f4f2fa" font-size="14">Write posts in your brand voice</text>
+<circle cx="354" cy="563" r="9" fill="#a855f7" opacity="0.22"/>
+<text x="354" y="567" fill="#f4f2fa" font-size="11" font-weight="700" text-anchor="middle">5</text>
+<text x="372" y="568" fill="#f4f2fa" font-size="14">9 checks: any fail and the post is dropped</text>
+<text x="1000" y="400" fill="#a9a3c2" font-size="13" font-weight="700" letter-spacing="1">BENCHMARK, 240 REVIEWS</text>
+<text x="1000" y="444" fill="#22c55e" font-size="32" font-weight="800">0</text>
+<text x="1040" y="440" fill="#f4f2fa" font-size="14">problem posts with ProofPost</text>
+<text x="1000" y="496" fill="#f87171" font-size="32" font-weight="800">606</text>
+<text x="1070" y="492" fill="#f4f2fa" font-size="14">with naive reposting</text>
+</svg>
